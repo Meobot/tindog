@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: darkslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 850px;
+    max-width: 500px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F6F7FB 100%);
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header img {
+    height: 30px;
+    margin: 9px;
+}
+
+.dog-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile {
+    max-height: 900px;
+    max-width: 98%;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    border: 1px solid grey;
+    background: transparent;
+    margin: 0px 20px;
+    width: 40%;
+    height: 4rem;
+    background: linear-gradient(180deg, #FFFFFF 0%, #dddee2 100%);
+    box-shadow: 0px 10px 20px #E9E9EA;
+}
+
+#dislike-btn {
+    border-radius: 25px 5px 5px 25px;
+}
+
+#like-btn {
+    border-radius: 5px 25px 25px 5px;
+}
