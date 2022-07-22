@@ -1,15 +1,34 @@
-import dogs from './data.js'
-
-//TODO getstamp function
-//TODO generate dog profile function
+import data from './data.js'
 
 class Dog {
-    constructor() {
+    constructor(data) {
         Object.assign(this, data)
-
-        //properties
+        this.badge = this.getBadgeHtml()
     }
-    // methods out here
 
+    getBadgeHtml() {
+        return (!this.hasBeenLiked && this.hasBeenSwiped) ?
+        `<img class="badge" src="badge-nope.png">` :
+        this.hasBeenLiked ?
+        `<img class="badge" src="badge-like.png">` : {}
+    }
+
+    getDogHtml() {
+        const {name, avatar, age, bio, hasBeenSwiped, hasBeenLiked} = this
+            
+            return `
+                <div id="profile">
+                    <figure class="txtover">
+                    <img id="profile-pic" src="${avatar}">
+                    <figcaption>
+                    <div id="bio-div">
+                    <h3> ${name}, ${age}</h3>
+                    <h4>${bio}</h4>
+                    </div>
+                    </figcaption>
+                    </figure>
+                </div>
+                `
+    }
 }
-
+export default Dog
