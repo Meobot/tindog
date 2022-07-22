@@ -9,23 +9,33 @@ import data from "./data.js"
 // Variables // 
 // let currentDogIndex = 0
 let dogArray = ["rex", "bella", "teddy", "bernie"]
-let currentDog = new Dog(data[dogArray])
+let currentDog = getNextDog()
 let isWaiting = false
 
-// Functions //
-// function getNextDog() {
-//     const nextDogData = dogData[dogArray.shift()]
-//     return nextDogData ? new Dog(nextDogData) : {}
-// }
+// Event Listeners //
+document.getElementById("like-btn").addEventListener("click", liked)
 
-// function liked() {
-//     if (!isWaiting) {
-//         //TODO turn on isWaiting, hasBeenLiked, render, get new dog
-//         isWaiting = true
-//         currentDog.hasBeenLiked = true
-//         render()
-//     }
-// }
+// Functions //
+function getNextDog() {
+    const nextDogData = data[dogArray.shift()]
+    return nextDogData ? new Dog(nextDogData) : {}
+}
+
+function liked() {
+    if (!isWaiting) {
+        console.log("like btn clicked")
+        isWaiting = true
+        currentDog.hasBeenLiked = true
+        setTimeout(() => {
+            getNextDog()
+            render()
+            isWaiting = false
+            console.log("time passed")
+        }, 2000)
+    } else {
+        console.log("something messed up")
+    }
+}
 
 // function noped() {
 //     if (!isWaiting) {
@@ -34,10 +44,8 @@ let isWaiting = false
 // }
 
 function render() {
-    document.getElementById("card").innerHTML = bernie.getDogHtml()
-//needs to grab getDogHtml() and render out on page similar to RPG
+    document.getElementById("card").innerHTML = currentDog.getDogHtml()
 }
-const bernie = new Dog(data.bernie)
-// document.getElementById("like-btn").addEventListener("click", liked)
+
 render()
 
