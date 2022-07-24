@@ -7,13 +7,14 @@ import Dog from "./Dog.js"
 import data from "./data.js"
 
 // Variables // 
-// let currentDogIndex = 0
-let dogArray = ["rex", "bella", "teddy", "bernie"]
+let dogArray = ["bernie", "skeeter", "irene", "carol", "hank"]
 let currentDog = getNextDog()
 let isWaiting = false
 
+
 // Event Listeners //
 document.getElementById("like-btn").addEventListener("click", liked)
+document.getElementById("dislike-btn").addEventListener("click", noped)
 
 // Functions //
 function getNextDog() {
@@ -23,25 +24,31 @@ function getNextDog() {
 
 function liked() {
     if (!isWaiting) {
-        console.log("like btn clicked")
         isWaiting = true
         currentDog.hasBeenLiked = true
+        let likeBadge = document.getElementById('badge-img')
+        likeBadge.innerHTML = `<img class="badge" src="images/badge-like.png">`
         setTimeout(() => {
-            getNextDog()
+            currentDog = getNextDog()
             render()
             isWaiting = false
-            console.log("time passed")
         }, 2000)
-    } else {
-        console.log("something messed up")
     }
 }
 
-// function noped() {
-//     if (!isWaiting) {
-//         //TODO turn on isWaiting, hasBeenSwiped, render, get new dog
-//     }
-// }
+function noped() {
+    if (!isWaiting) {
+        isWaiting = true
+        currentDog.hasBeenSwiped = true
+        let nopeBadge = document.getElementById('badge-img')
+        nopeBadge.innerHTML = `<img class="badge" src="images/badge-nope.png">`
+        setTimeout(() => {
+            currentDog = getNextDog()
+            render()
+            isWaiting = false
+        }, 2000)
+    }
+}
 
 function render() {
     document.getElementById("card").innerHTML = currentDog.getDogHtml()

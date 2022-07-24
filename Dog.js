@@ -21,6 +21,7 @@ class Dog {
                     <figure class="txtover">
                     <img id="profile-pic" src="${avatar}">
                     <figcaption>
+                    <div id="badge-img"></div>
                     <div id="bio-div">
                     <h3> ${name}, ${age}</h3>
                     <h4>${bio}</h4>
